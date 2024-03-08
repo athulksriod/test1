@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle POST requests to '/your-endpoint'
-app.post('/your-endpoint', (req, res) => {
+app.post('/', (req, res) => {
   console.log('Received POST request:', req.body);
   res.send('Received your POST request!');
 });
