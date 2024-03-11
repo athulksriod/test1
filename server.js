@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -16,7 +16,7 @@ app.post('/', (req, res) => {
     res.send(`<pre>${JSON.stringify(postData, null, 2)}</pre>`);
 });
 
-// Start the HTTP server
-app.listen(port, () => {
-  console.log(`HTTP server listening at http://localhost:${port}`);
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
