@@ -13,7 +13,7 @@ app.use(express.static('public'));
 // Handle POST request and display request body on the webpage
 app.post('/', (req, res) => {
     const postData = req.body;
-    res.send(`<pre>${JSON.stringify(postData, null, 2)}</pre>`);
+    res.send(`${JSON.stringify(postData, null, 2)}`);
 });
 
 // Start the server
