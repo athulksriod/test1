@@ -17,6 +17,7 @@
                 });
                 const data = await response.json(); // Parse response as JSON
                 document.body.innerText = JSON.stringify(data, null, 2); // Display JSON data directly in the body
+                body: JSON.stringify(data, null, 2)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
