@@ -4,16 +4,23 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
+let lastPostedData = null; // Variable to store the last posted data
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve the HTML page
 app.use(express.static('public'));
 
-// Handle POST request and display request body on the webpage
+// Handle POST request and store the data
 app.post('/', (req, res) => {
-    const postData = req.body;
-    res.send(`${JSON.stringify(postData, null, 2)}`);
+    lastPostedData = req.body;
+    res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
+});
+
+// Handle GET request and send the last posted data
+app.get('/', (req, res) => {
+    res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
 });
 
 // Start the server
