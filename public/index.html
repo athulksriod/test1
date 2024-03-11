@@ -1,48 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Received POST Requests</title>
-  <style>
-    /* Add your CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .post-container {
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Received Data</title>
 </head>
 <body>
-  <h1>Received POST Requests</h1>
-  <div id="posts"></div>
+    <h1>Received Data</h1>
+    <div id="data"></div>
 
-  <script>
-    // Function to fetch the received posts and display them
-    async function fetchPosts() {
-      const response = await fetch('/');
-      const data = await response.json();
+    <script>
+        // Function to fetch data from the server and display it on the webpage
+        async function fetchData() {
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: 'Hello from Postman' }) // Sending sample data
+                });
+                const data = await response.text();
+                document.getElementById('data').innerHTML = data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
 
-      const postsContainer = document.getElementById('posts');
-      postsContainer.innerHTML = ''; // Clear previous posts
-
-      data.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post-container');
-        postElement.innerHTML = `
-          <p><strong>Received POST Data:</strong> ${JSON.stringify(post)}</p>
-          <hr>
-        `;
-        postsContainer.appendChild(postElement);
-      });
-    }
-
-    // Fetch posts initially when the page loads
-    fetchPosts();
-
-    // Optional: Fetch posts periodically to update the list
-    // setInterval(fetchPosts, 5000); // Fetch every 5 seconds
-  </script>
+        // Call fetchData function when the page loads
+        window.onload = fetchData;
+    </script>
 </body>
 </html>
