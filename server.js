@@ -18,8 +18,8 @@ app.post('/', (req, res) => {
     res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
 });
 
-// Handle GET request and send the last posted data
-app.get('/', (req, res) => {
+// Handle GET request for retrieving the last posted data
+app.get('/lastPostedData', (req, res) => {
     res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
 });
 
