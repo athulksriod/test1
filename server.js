@@ -1,23 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
 
 const app = express();
-const port = 5000; // Port number for the HTTP server
+const PORT = 3000;
 
-// Parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve the HTML page
+app.use(express.static('public'));
 
-// Handle POST requests to '/your-endpoint'
+// Handle POST request and display request body on the webpage
 app.post('/', (req, res) => {
-  console.log('Received POST request:', req.body);
-  res.json([{ message: 'Received your POST request!', data: req.body }]);
+    const postData = req.body;
+    res.send(`<pre>${JSON.stringify(postData, null, 2)}</pre>`);
 });
 
-// Start the HTTP server
-app.listen(port, () => {
-  console.log(`HTTP server listening at http://localhost:${port}`);
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
