@@ -15,6 +15,7 @@ app.use(express.static('public'));
 // Handle POST request and store the data
 app.post('/', (req, res) => {
     lastPostedData = req.body;
+    console.log('Received POST request:', req.body);
     res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
 });
 
