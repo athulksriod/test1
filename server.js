@@ -21,7 +21,7 @@ app.post('/', (req, res) => {
 
 // Handle GET request for retrieving the last posted data
 app.get('/lastPostedData', (req, res) => {
-    res.send(`${JSON.stringify(lastPostedData, null, 2)}`);
+    res.json(lastPostedData);
 });
 
 // Start the server
