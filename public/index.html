@@ -16,10 +16,10 @@
 // Fetch content from an external source
     fetch('/lastPostedData')
       .then(response => response.json())
-        myDiv.textContent = response;
+        
       .then(data => {
         // Set the fetched data as the text content of the div
-        
+        myDiv.textContent = data.test;
       })
       .catch(error => console.error('Error fetching data:', error))
 
