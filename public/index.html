@@ -15,8 +15,8 @@
                  var myDiv = document.getElementById("myDiv");
 // Fetch content from an external source
     fetch('/lastPostedData')
-      .then(response => {myDiv.textContent = response;})
-        
+      .then(response => response.json())
+        myDiv.textContent = response;
       .then(data => {
         // Set the fetched data as the text content of the div
         
