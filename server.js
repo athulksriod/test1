@@ -22,7 +22,7 @@ app.post('/', (req, res) => {
 // Handle GET request for retrieving the last posted data
 app.get('/lastPostedData', (req, res) => {
     console.log(lastPostedData);
-    res.json(lastPostedData);
+    res.json({"test:",lastPostedData);
 });
 
 // Start the server
