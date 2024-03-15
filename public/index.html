@@ -18,7 +18,7 @@
       .then(response => response.json())
       .then(data => {
         // Set the fetched data as the text content of the div
-        myDiv.textContent = data;
+        myDiv.textContent = data.test;
       })
       .catch(error => console.error('Error fetching data:', error))
 
