@@ -21,7 +21,7 @@ app.post('/', (req, res) => {
 
 // Handle GET request for retrieving the last posted data
 app.get('/lastPostedData', (req, res) => {
-    lastPostedData = req.body;
+    console.log(lastPostedData);
     res.json(lastPostedData);
 });
 
