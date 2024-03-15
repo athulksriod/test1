@@ -6,24 +6,23 @@
     <title>Received Data</title>
 </head>
 <body>
+
     <h1>Received Data</h1>
+    <div id="myDiv"></div>
 
     <script>
-        // Function to fetch last posted data from the server and display it in the body
-        async function fetchLastPostedData() {
-            try {
-                const response = await fetch('/lastPostedData', {
-                    method: 'GET' // Making a GET request
-                });
-                const data = await response.json(); // Parse response as JSON
-                document.body.innerText = JSON.stringify(data, null, 2); // Display JSON data directly in the body
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
 
-        // Call fetchLastPostedData function when the page loads
-        window.onload = fetchLastPostedData;
+                 var myDiv = document.getElementById("myDiv");
+// Fetch content from an external source
+    fetch('/lastPostedData')
+      .then(response => response.json())
+      .then(data => {
+        // Set the fetched data as the text content of the div
+        myDiv.textContent = data;
+      })
+      .catch(error => console.error('Error fetching data:', error))
+
+
     </script>
 </body>
 </html>
